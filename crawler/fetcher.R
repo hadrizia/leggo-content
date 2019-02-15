@@ -1,6 +1,7 @@
 #! /usr/bin/Rscript
 
 suppressWarnings(suppressMessages(source(here::here("crawler/utils/constants.R"))))
+suppressWarnings(suppressMessages(source(here::here("crawler/process_data.R"))))
 
 #' @title Install and load a list of packages
 #' @description Install new packages and load all required libraries
@@ -15,7 +16,7 @@ install_and_load_packages <- function(list_of_packages) {
     suppressMessages(suppressWarnings(install.packages(new_packages)))
   }
   
-  suppressMessages(suppressWarnings(lapply(list_of_packages, require)))
+  suppressWarnings(suppressMessages(lapply(list_of_packages, require)))
   suppressWarnings(suppressMessages(devtools::install_github(.RCONGRESSO_URL, force = TRUE)))
   suppressWarnings(suppressMessages(devtools::install_github(.LEGGO_URL, force = TRUE)))
 }
@@ -41,8 +42,8 @@ get_args <- function() {
                 metavar="character")
   );
   
-  opt_parser <- OptionParser(option_list = option_list) 
-  opt <- parse_args(opt_parser)
+  opt_parser <- optparse::OptionParser(option_list = option_list) 
+  opt <- optparse::parse_args(opt_parser)
   return(opt);
 }
 
@@ -53,6 +54,3 @@ args <- get_args()
 df <- fetch_data(args$input)
 
 save_data(df, args$output)
-
-
-

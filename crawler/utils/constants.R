@@ -3,12 +3,11 @@
 .CAMARA = "camara"
 .SENADO = "senado"
 
-.PACK <- "Package"
-.LIST_OF_PACKAGES <- c("RCurl", "dplyr", "lubridate", "magrittr", "stats", 
-                      "stringr", "tibble", "tidyr", "utils", "devtools", "optparse")
-
-.RCONGRESSO_URL <- "andresmrm/rcongresso"
-.LEGGO_URL <- "analytics-ufcg/agora-digital"
+.RCONGRESSO <- "rcongresso"
+.LEGGO <- "agora-digital"
+  
+.RCONGRESSO_URL <- paste0("analytics-ufcg/", .RCONGRESSO)
+.LEGGO_URL <- paste0("analytics-ufcg/", .LEGGO)
 
 .README_MESSAGE <- "Read the README file"
 .HELP_MESSAGE <- "Use --help for more information\n"
